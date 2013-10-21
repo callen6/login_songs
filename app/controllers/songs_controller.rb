@@ -4,7 +4,11 @@ class SongsController < ApplicationController
   # GET /songs
   # GET /songs.json
   def index
+    if current_user
+      @songs = current_user.songs
+    else
     @songs = Song.all
+    end
   end
 
   # GET /songs/1
@@ -25,7 +29,8 @@ class SongsController < ApplicationController
   # POST /songs.json
   def create
     @song = Song.new(song_params)
-
+    # if there's a current user, when they add a song, it gets added to their song collection
+    current_user.songs << @song
     respond_to do |format|
       if @song.save
         format.html { redirect_to @song, notice: 'Song was successfully created.' }

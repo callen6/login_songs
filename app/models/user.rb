@@ -17,6 +17,9 @@ class User < ActiveRecord::Base
 
 	attr_accessor :password
 
+	has_many :song_collections
+	has_many :songs, through: :song_collections
+
 	before_save :encrypt_password
 	validates_confirmation_of :password
 	validates_presence_of :password, :on => :create

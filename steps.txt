@@ -55,7 +55,11 @@ u.save!
 #### Add a User *class* method that will authenticate a user.
 
 def self.authenticate(email, password)
+<<<<<<< HEAD
   user = User.find_by_email(email)
+=======
+  user = self.find_by_email(email)
+>>>>>>> a7f91aee146945d1df0ab1101f2fe18dfa00a7f3
   if user && user.password_digest == BCrypt::Engine.hash_secret(password, user.password_salt)
     user
   else
