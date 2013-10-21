@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 
 	def user_params
 		# if in a hash there is a :user key, then app permits other values through
-		params.require(:user).permit(:email, :password, :password_confirmation)
+		params.require(:user).permit(:email, :password) # :password_confirmation)
 	end
 
 end
