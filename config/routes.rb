@@ -5,6 +5,7 @@ LoginSongs::Application.routes.draw do
   resources :users
   resources :sessions
 
+  get "sign_up" => "users#new", :as => "sign_up"
   get "log_in" => "sessions#new", :as => "log_in"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
